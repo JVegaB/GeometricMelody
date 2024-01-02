@@ -1,0 +1,52 @@
+[gd_scene load_steps=4 format=3 uid="uid://cjj488fjgr5xn"]
+
+[ext_resource type="Script" path="res://shape/pentagon_b/pentagon_b.gd" id="1_ifcow"]
+[ext_resource type="Texture2D" uid="uid://disl3qgf33iy5" path="res://assets/pentagon.png" id="2_037ia"]
+[ext_resource type="PackedScene" uid="uid://bc87crx48hln6" path="res://health_c/health_c.tscn" id="4_nnoqx"]
+
+[node name="pentagon_b" type="Node2D" node_paths=PackedStringArray("hurt_box", "hit_box", "health_c")]
+script = ExtResource("1_ifcow")
+hurt_box = NodePath("hurt")
+hit_box = NodePath("hit")
+health_c = NodePath("HeartC")
+color = Color(0.729412, 0.00392157, 0.984314, 1)
+
+[node name="Pentagon" type="Sprite2D" parent="."]
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("2_037ia")
+
+[node name="hit" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="hit"]
+scale = Vector2(0.25, 0.25)
+polygon = PackedVector2Array(-2, -179, 189, -39, 115, 183, -117, 184, -187, -44)
+
+[node name="hurt" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="hurt"]
+scale = Vector2(0.25, 0.25)
+polygon = PackedVector2Array(-1, -205, 216, -42, 127, 207, -137, 204, -219, -53)
+
+[node name="HeartC" parent="." instance=ExtResource("4_nnoqx")]
+health = 10
+
+[node name="NewbornPos" type="Node2D" parent="."]
+
+[node name="Marker2D" type="Marker2D" parent="NewbornPos"]
+position = Vector2(-30, -43)
+
+[node name="Marker2D2" type="Marker2D" parent="NewbornPos"]
+position = Vector2(31, -42)
+
+[node name="Marker2D3" type="Marker2D" parent="NewbornPos"]
+position = Vector2(53, 13)
+
+[node name="Marker2D4" type="Marker2D" parent="NewbornPos"]
+position = Vector2(0, 54)
+
+[node name="Marker2D5" type="Marker2D" parent="NewbornPos"]
+position = Vector2(-52, 9)

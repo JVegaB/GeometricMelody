@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://budb4nwkfcu1c"]
+
+[ext_resource type="Script" path="res://levels/level_a/hordes/stage_a/2/2.gd" id="1_pdxus"]
+[ext_resource type="PackedScene" uid="uid://btextxkfp6f3b" path="res://enemy/generators/random/random.tscn" id="2_0dau0"]
+
+[node name="2" type="Node2D"]
+script = ExtResource("1_pdxus")
+
+[node name="Random" parent="." instance=ExtResource("2_0dau0")]
+rounds = 2
+entities = 3

@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://8nxopr3054yk"]
+
+[ext_resource type="Script" path="res://failure_end/failure.gd" id="1_bxy8e"]
+[ext_resource type="Texture2D" uid="uid://c0tfwb5yv1ggn" path="res://assets/endbad/retry.png" id="1_dgw7d"]
+[ext_resource type="Texture2D" uid="uid://dnsh47v6h8nrt" path="res://assets/endbad/FAIL.png" id="2_nysxp"]
+[ext_resource type="Texture2D" uid="uid://crco00xlqwmi8" path="res://assets/endbad/esc.png" id="3_rgxbe"]
+
+[node name="failure" type="Node2D"]
+script = ExtResource("1_bxy8e")
+
+[node name="A" type="Node2D" parent="."]
+visible = false
+
+[node name="Retry" type="Sprite2D" parent="A"]
+modulate = Color(0.819608, 0.129412, 0.160784, 1)
+position = Vector2(612, 442)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("2_nysxp")
+
+[node name="B" type="Node2D" parent="."]
+visible = false
+
+[node name="Infinite" type="Sprite2D" parent="B"]
+position = Vector2(603, 335)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_rgxbe")
+
+[node name="Mode" type="Sprite2D" parent="B"]
+position = Vector2(603, 495)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_dgw7d")

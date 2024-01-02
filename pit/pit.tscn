@@ -1,0 +1,46 @@
+[gd_scene load_steps=5 format=3 uid="uid://8kjtwgwtfw4i"]
+
+[ext_resource type="Script" path="res://pit/pit.gd" id="1_3i5hn"]
+[ext_resource type="PackedScene" uid="uid://b0ggnfirdio1n" path="res://curved_wall_quarter/curved_wall_quarter.tscn" id="1_642cp"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_5q1kd"]
+radius = 250.0
+height = 500.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_eb22y"]
+radius = 222.0
+
+[node name="Pit" type="Node2D"]
+script = ExtResource("1_3i5hn")
+
+[node name="CurvedWallQuarter" parent="." instance=ExtResource("1_642cp")]
+position = Vector2(4, 0)
+scale = Vector2(1.65, 1.65)
+
+[node name="CurvedWallQuarter2" parent="." instance=ExtResource("1_642cp")]
+position = Vector2(3, 3)
+rotation = 1.60844
+scale = Vector2(1.65, 1.65)
+
+[node name="CurvedWallQuarter3" parent="." instance=ExtResource("1_642cp")]
+position = Vector2(0, 5)
+rotation = -3.0763
+scale = Vector2(1.65, 1.65)
+
+[node name="CurvedWallQuarter4" parent="." instance=ExtResource("1_642cp")]
+rotation = -1.49539
+scale = Vector2(1.65, 1.65)
+
+[node name="center" type="MeshInstance2D" parent="."]
+visible = false
+modulate = Color(1, 1, 1, 0.478431)
+mesh = SubResource("SphereMesh_5q1kd")
+
+[node name="EnemyActivation" type="Area2D" parent="."]
+visible = false
+collision_layer = 0
+collision_mask = 4
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyActivation"]
+shape = SubResource("CircleShape2D_eb22y")

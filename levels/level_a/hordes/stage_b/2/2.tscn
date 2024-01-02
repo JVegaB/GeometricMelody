@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://d10t2i21swqgu"]
+
+[ext_resource type="Script" path="res://levels/level_a/hordes/stage_b/2/2.gd" id="1_sunvk"]
+[ext_resource type="PackedScene" uid="uid://l6ujd8a3rgd" path="res://enemy/generators/inline_base/inline.tscn" id="2_o4iia"]
+
+[node name="2" type="Node2D"]
+script = ExtResource("1_sunvk")
+
+[node name="Inline" parent="." instance=ExtResource("2_o4iia")]
+steps = 12
+wait_time = 0.75
+remaining_iterations = 7.0
+
+[node name="Marker2D" type="Marker2D" parent="Inline"]
+position = Vector2(0, -267)
+
+[node name="Marker2D2" type="Marker2D" parent="Inline"]
+position = Vector2(0, 265)

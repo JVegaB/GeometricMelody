@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://b0ggnfirdio1n"]
+
+[ext_resource type="Script" path="res://curved_wall_quarter/curved_wall_quarter.gd" id="1_pc7i8"]
+
+[node name="CurvedWallQuarter" type="StaticBody2D"]
+collision_mask = 3
+script = ExtResource("1_pc7i8")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+
+[node name="Line2D" type="Line2D" parent="."]
+visible = false
+points = PackedVector2Array(0, -150, 26, -148, 52, -141, 73, -131, 95, -116, 110, -102, 125, -83, 139, -57, 149, -17, 150, 2, 150, 8, 199, 10, 206, -156, 0, -166, -2, -154)
+width = 1.0

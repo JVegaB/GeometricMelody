@@ -1,0 +1,32 @@
+[gd_scene load_steps=3 format=3 uid="uid://2sdj604dsyxx"]
+
+[ext_resource type="PackedScene" uid="uid://l6ujd8a3rgd" path="res://enemy/generators/inline_base/inline.tscn" id="1_gbbsb"]
+[ext_resource type="Script" path="res://levels/level_a/hordes/stage_a/1/1.gd" id="1_r5pkm"]
+
+[node name="1" type="Node2D"]
+script = ExtResource("1_r5pkm")
+
+[node name="pivot" type="Node2D" parent="."]
+
+[node name="InlineSpawner" parent="pivot" instance=ExtResource("1_gbbsb")]
+position = Vector2(2, -61)
+steps = 2
+wait_start_time = 0.5
+remaining_iterations = 3.0
+
+[node name="a" type="Marker2D" parent="pivot/InlineSpawner"]
+position = Vector2(0, -99)
+
+[node name="b" type="Marker2D" parent="pivot/InlineSpawner"]
+position = Vector2(0, 86)
+
+[node name="InlineSpawner2" parent="pivot" instance=ExtResource("1_gbbsb")]
+position = Vector2(2, 50)
+steps = 2
+remaining_iterations = 3.0
+
+[node name="a" type="Marker2D" parent="pivot/InlineSpawner2"]
+position = Vector2(0, -97)
+
+[node name="b" type="Marker2D" parent="pivot/InlineSpawner2"]
+position = Vector2(0, 88)

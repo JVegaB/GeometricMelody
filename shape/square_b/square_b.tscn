@@ -1,0 +1,41 @@
+[gd_scene load_steps=6 format=3 uid="uid://gw6dvvbvprw3"]
+
+[ext_resource type="Script" path="res://shape/square_b/square_b.gd" id="1_nkb4m"]
+[ext_resource type="Texture2D" uid="uid://cmx2yek216bn" path="res://assets/shapes/square.png" id="2_e5woa"]
+[ext_resource type="PackedScene" uid="uid://bc87crx48hln6" path="res://health_c/health_c.tscn" id="3_2uwkn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w0gds"]
+size = Vector2(56, 53)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fowu1"]
+size = Vector2(37, 38)
+
+[node name="SquareB" type="Node2D" node_paths=PackedStringArray("hurt_box", "hit_box", "health_c")]
+script = ExtResource("1_nkb4m")
+hurt_box = NodePath("Hurt")
+hit_box = NodePath("Hit")
+health_c = NodePath("HeartC")
+color = Color(0, 0.458824, 0.419608, 1)
+
+[node name="Square" type="Sprite2D" parent="."]
+texture = ExtResource("2_e5woa")
+
+[node name="Hurt" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Hurt"]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_w0gds")
+debug_color = Color(0.988235, 0, 0.301961, 0.419608)
+
+[node name="Hit" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hit"]
+position = Vector2(0.5, 0)
+shape = SubResource("RectangleShape2D_fowu1")
+
+[node name="HeartC" parent="." instance=ExtResource("3_2uwkn")]
+health = 4

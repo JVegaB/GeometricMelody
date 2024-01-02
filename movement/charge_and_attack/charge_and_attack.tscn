@@ -1,0 +1,18 @@
+[gd_scene load_steps=6 format=3 uid="uid://0eb34fx5qk6x"]
+
+[ext_resource type="Script" path="res://movement/charge_and_attack/charge_and_attack.gd" id="1_bhthe"]
+[ext_resource type="PackedScene" uid="uid://dsjsk6trn84ww" path="res://StateMachine/state_machine_node.tscn" id="2_sqq2f"]
+[ext_resource type="PackedScene" uid="uid://dqily8bfdipu6" path="res://movement/charge_and_attack/to_target.tscn" id="3_fxhau"]
+[ext_resource type="PackedScene" uid="uid://7na30vsaew2k" path="res://movement/charge_and_attack/charge.tscn" id="4_mottg"]
+[ext_resource type="PackedScene" uid="uid://dd5uxopxuynfa" path="res://movement/charge_and_attack/attack.tscn" id="5_h8576"]
+
+[node name="ChargeAndAttack" type="Node2D"]
+script = ExtResource("1_bhthe")
+
+[node name="StateMachineNode" parent="." instance=ExtResource("2_sqq2f")]
+
+[node name="ToTarget" parent="StateMachineNode" instance=ExtResource("3_fxhau")]
+
+[node name="Charge" parent="StateMachineNode" instance=ExtResource("4_mottg")]
+
+[node name="Attack" parent="StateMachineNode" instance=ExtResource("5_h8576")]

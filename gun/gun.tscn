@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://d0um6iaxk5vqb"]
+
+[ext_resource type="Script" path="res://gun/gun.gd" id="1_402pj"]
+
+[node name="Gun" type="Node2D"]
+script = ExtResource("1_402pj")
+bullet_path = "res://bullet/bullet.tscn"
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.05

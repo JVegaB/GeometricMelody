@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://cmmtw30r0hhpi"]
+
+[ext_resource type="PackedScene" uid="uid://l6ujd8a3rgd" path="res://enemy/generators/inline_base/inline.tscn" id="1_ji5km"]
+
+[node name="InlineAuto" type="Node2D"]
+
+[node name="Inline" parent="." instance=ExtResource("1_ji5km")]
+
+[node name="Marker2D" type="Marker2D" parent="Inline"]
+position = Vector2(0, -287)
+
+[node name="Marker2D2" type="Marker2D" parent="Inline"]
+position = Vector2(0, 296)

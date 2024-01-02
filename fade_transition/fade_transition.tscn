@@ -1,0 +1,75 @@
+[gd_scene load_steps=6 format=3 uid="uid://8ypaih4no5yb"]
+
+[ext_resource type="Script" path="res://fade_transition/fade_transition.gd" id="1_lv8q4"]
+
+[sub_resource type="Animation" id="Animation_0304q"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_ousxn"]
+resource_name = "fade_in"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_yrgu4"]
+resource_name = "fade_out"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_mqfy0"]
+_data = {
+"RESET": SubResource("Animation_0304q"),
+"fade_in": SubResource("Animation_ousxn"),
+"fade_out": SubResource("Animation_yrgu4")
+}
+
+[node name="fade_transition" type="CanvasLayer"]
+script = ExtResource("1_lv8q4")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -138.0
+offset_top = -81.0
+offset_right = 1383.0
+offset_bottom = 1054.0
+color = Color(0, 0, 0, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Timer")
+speed_scale = 2.0
+libraries = {
+"": SubResource("AnimationLibrary_mqfy0")
+}
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true

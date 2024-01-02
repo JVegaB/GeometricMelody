@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://dm71lkxjwq6ec"]
+
+[ext_resource type="Script" path="res://dev/world.gd" id="1_lml6o"]
+[ext_resource type="PackedScene" uid="uid://f20esumgafn" path="res://player/player.tscn" id="2_xyh0q"]
+[ext_resource type="PackedScene" uid="uid://d0um6iaxk5vqb" path="res://gun/gun.tscn" id="3_vis12"]
+[ext_resource type="PackedScene" uid="uid://l6ujd8a3rgd" path="res://spawner/spawner_a.tscn" id="6_btoaj"]
+
+[node name="World" type="Node2D"]
+script = ExtResource("1_lml6o")
+
+[node name="Player" parent="." instance=ExtResource("2_xyh0q")]
+position = Vector2(493, 332)
+acceleration = 10.0
+
+[node name="Gun" parent="Player" instance=ExtResource("3_vis12")]
+
+[node name="Marker2D" type="Marker2D" parent="Player/Gun"]
+position = Vector2(-5, -7)
+
+[node name="Marker2D2" type="Marker2D" parent="Player/Gun"]
+position = Vector2(4, -7)
+
+[node name="Spawner" parent="." instance=ExtResource("6_btoaj")]
+position = Vector2(459.784, 186.135)
+
+[node name="Marker2D" type="Marker2D" parent="Spawner"]
+position = Vector2(113.216, -6.13524)
+
+[node name="Marker2D2" type="Marker2D" parent="Spawner"]
+position = Vector2(-106.784, -6.13524)

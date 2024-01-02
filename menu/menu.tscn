@@ -1,0 +1,57 @@
+[gd_scene load_steps=9 format=3 uid="uid://ckm13avlw2l6b"]
+
+[ext_resource type="Script" path="res://menu/menu.gd" id="1_jh6f4"]
+[ext_resource type="Texture2D" uid="uid://dnuva1ywt5jdl" path="res://assets/menu/play.png" id="1_xb38k"]
+[ext_resource type="PackedScene" uid="uid://cudbrxvjq2cjj" path="res://rotation_plataform/rotation_plataform.tscn" id="3_o1a83"]
+[ext_resource type="Texture2D" uid="uid://bqpun3pbkgcy6" path="res://assets/dotted.png" id="4_1y8oe"]
+[ext_resource type="PackedScene" uid="uid://d3se0uwyxxxn2" path="res://game_boundaries/game_boundaries.tscn" id="5_ik7vu"]
+[ext_resource type="PackedScene" uid="uid://8ypaih4no5yb" path="res://fade_transition/fade_transition.tscn" id="6_7pndg"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_am7n8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mnif1"]
+size = Vector2(595.537, 277.558)
+
+[node name="Menu" type="Node2D"]
+script = ExtResource("1_jh6f4")
+
+[node name="opaque" type="MeshInstance2D" parent="."]
+visible = false
+modulate = Color(0, 0, 0, 1)
+z_index = -1
+position = Vector2(619.84, 437.09)
+scale = Vector2(1779.68, 1006.18)
+mesh = SubResource("QuadMesh_am7n8")
+
+[node name="Play" type="Sprite2D" parent="."]
+position = Vector2(607, 452)
+scale = Vector2(0.371094, 0.371094)
+texture = ExtResource("1_xb38k")
+
+[node name="Area2D" type="Area2D" parent="Play"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Play/Area2D"]
+position = Vector2(4.04199, 4.04187)
+shape = SubResource("RectangleShape2D_mnif1")
+
+[node name="RotationPlataform" parent="." instance=ExtResource("3_o1a83")]
+z_index = 1
+position = Vector2(599, 450)
+
+[node name="Dotted" type="Sprite2D" parent="RotationPlataform"]
+modulate = Color(1, 1, 1, 0.207843)
+light_mask = 0
+z_index = 2
+position = Vector2(6.57599, 3.57382)
+scale = Vector2(0.497229, 0.497347)
+texture = ExtResource("4_1y8oe")
+
+[node name="GameBoundaries" parent="." instance=ExtResource("5_ik7vu")]
+position = Vector2(2, 0)
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.25
+one_shot = true
+autostart = true
+
+[node name="fade_transition" parent="." instance=ExtResource("6_7pndg")]

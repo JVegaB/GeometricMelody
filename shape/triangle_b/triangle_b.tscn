@@ -1,0 +1,46 @@
+[gd_scene load_steps=6 format=3 uid="uid://b4hnb807458sv"]
+
+[ext_resource type="Script" path="res://shape/triangle_b/triangle_b.gd" id="1_4qsqb"]
+[ext_resource type="Texture2D" uid="uid://bpkndmsxap41h" path="res://assets/shapes/triangle.png" id="2_43hky"]
+[ext_resource type="PackedScene" uid="uid://bc87crx48hln6" path="res://health_c/health_c.tscn" id="2_k0p0r"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_nqmk1"]
+radius = 8.79184
+height = 21.8311
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_i1u25"]
+radius = 11.0
+height = 26.0
+
+[node name="TriangleB" type="Node2D" node_paths=PackedStringArray("hurt_box", "hit_box", "health_c")]
+script = ExtResource("1_4qsqb")
+hurt_box = NodePath("Hurtbox")
+hit_box = NodePath("Hitbox")
+health_c = NodePath("HeartC")
+color = Color(0.964706, 0.352941, 0, 1)
+
+[node name="Hurtbox" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 2
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+position = Vector2(0, -3)
+scale = Vector2(2.50232, 1.74064)
+shape = SubResource("CapsuleShape2D_nqmk1")
+debug_color = Color(0.807843, 0.0745098, 0.227451, 0.419608)
+
+[node name="Triangle" type="Sprite2D" parent="."]
+position = Vector2(0, -5)
+scale = Vector2(0.755814, 0.755814)
+texture = ExtResource("2_43hky")
+
+[node name="HeartC" parent="." instance=ExtResource("2_k0p0r")]
+health = 3
+
+[node name="Hitbox" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource("CapsuleShape2D_i1u25")

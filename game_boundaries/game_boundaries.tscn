@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://d3se0uwyxxxn2"]
+
+[ext_resource type="Script" path="res://game_boundaries/game_boundaries.gd" id="1_arcfx"]
+[ext_resource type="Texture2D" uid="uid://oared7fvi2et" path="res://assets/bg.png" id="2_1eing"]
+[ext_resource type="PackedScene" uid="uid://8kjtwgwtfw4i" path="res://pit/pit.tscn" id="3_ohb4q"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_vt04i"]
+
+[node name="GameBoundaries" type="Node2D"]
+script = ExtResource("1_arcfx")
+
+[node name="opaque" type="MeshInstance2D" parent="."]
+modulate = Color(0, 0, 0, 1)
+z_index = -1
+position = Vector2(619.84, 437.09)
+scale = Vector2(1779.68, 1006.18)
+mesh = SubResource("QuadMesh_vt04i")
+
+[node name="Bg" type="Sprite2D" parent="."]
+modulate = Color(0.137255, 0.137255, 0.137255, 1)
+self_modulate = Color(0, 0, 0, 0.737255)
+z_index = 2
+position = Vector2(633, 441)
+scale = Vector2(0.89383, 0.890972)
+texture = ExtResource("2_1eing")
+
+[node name="Pit" parent="." instance=ExtResource("3_ohb4q")]
+position = Vector2(605, 451.178)
+scale = Vector2(1.61314, 1.61314)

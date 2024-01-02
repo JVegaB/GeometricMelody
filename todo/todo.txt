@@ -1,0 +1,2 @@
+cambiar el cuadrado por el pentagono, para que la evolucion se 3->4->5->6.
+

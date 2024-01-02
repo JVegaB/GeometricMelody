@@ -1,0 +1,36 @@
+[gd_scene load_steps=6 format=3 uid="uid://daicngc8dph2j"]
+
+[ext_resource type="Texture2D" uid="uid://cr4j4kmq5jshu" path="res://assets/endgood/youare.png" id="1_3l4xj"]
+[ext_resource type="Script" path="res://succes_end/success.gd" id="1_ukrom"]
+[ext_resource type="Texture2D" uid="uid://bkpfmbcoetkjb" path="res://assets/endgood/abeast.png" id="2_notwy"]
+[ext_resource type="Texture2D" uid="uid://c1r0wd8i1ixht" path="res://assets/endgood/INFINITE.png" id="3_eude7"]
+[ext_resource type="Texture2D" uid="uid://cuuy6ymm8y2x5" path="res://assets/endgood/MODE.png" id="4_b24h1"]
+
+[node name="success" type="Node2D"]
+script = ExtResource("1_ukrom")
+
+[node name="A" type="Node2D" parent="."]
+visible = false
+
+[node name="Youare" type="Sprite2D" parent="A"]
+position = Vector2(596, 336)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_3l4xj")
+
+[node name="Abeast" type="Sprite2D" parent="A"]
+position = Vector2(600, 491)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_notwy")
+
+[node name="B" type="Node2D" parent="."]
+visible = false
+
+[node name="Infinite" type="Sprite2D" parent="B"]
+position = Vector2(603, 335)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_eude7")
+
+[node name="Mode" type="Sprite2D" parent="B"]
+position = Vector2(603, 495)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("4_b24h1")

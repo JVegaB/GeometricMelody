@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=3 uid="uid://c0p3p8ymr6ti2"]
+
+[ext_resource type="Script" path="res://levels/level_a/hordes/stage_c/1/1_spin.gd" id="1_2jo47"]
+[ext_resource type="PackedScene" uid="uid://cv0rsc0ikbucb" path="res://enemy/generators/spin/spin.tscn" id="2_qnvfh"]
+[ext_resource type="PackedScene" uid="uid://pte8gxhtx2xu" path="res://movement/float/float.tscn" id="3_rttyr"]
+
+[node name="1Spin" type="Node2D"]
+script = ExtResource("1_2jo47")
+
+[node name="SpinSpawner" parent="." instance=ExtResource("2_qnvfh")]
+enemy_path = "res://shape/pentagon_b/pentagon_b.tscn"
+arms = 3
+
+[node name="Float" parent="SpinSpawner" instance=ExtResource("3_rttyr")]

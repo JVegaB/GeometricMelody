@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=3 uid="uid://bdq3l7nkklx7j"]
+
+[ext_resource type="PackedScene" uid="uid://btextxkfp6f3b" path="res://enemy/generators/random/random.tscn" id="1_84rye"]
+[ext_resource type="Script" path="res://levels/level_a/hordes/stage_c/2/2.gd" id="1_h6k3d"]
+[ext_resource type="PackedScene" uid="uid://6jwucttg8tpp" path="res://shape/pentagon_a/pentagon.tscn" id="3_ameka"]
+
+[node name="2" type="Node2D"]
+script = ExtResource("1_h6k3d")
+
+[node name="Random" parent="." instance=ExtResource("1_84rye")]
+scene_to_spawn = ExtResource("3_ameka")
+rounds = 2
+entities = 2
+entity_time_sep = 1.0

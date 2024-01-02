@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://c6w03chd2sdqr"]
+
+[ext_resource type="Script" path="res://levels/level_a/hordes/stage_a/3/3.gd" id="1_q55uc"]
+[ext_resource type="PackedScene" uid="uid://cv0rsc0ikbucb" path="res://enemy/generators/spin/spin.tscn" id="2_rjn2o"]
+[ext_resource type="PackedScene" uid="uid://d4j61dqtxgn3t" path="res://movement/straight/straight.tscn" id="3_mwft6"]
+
+[node name="3" type="Node2D"]
+script = ExtResource("1_q55uc")
+
+[node name="SpinSpawner" parent="." instance=ExtResource("2_rjn2o")]
+enemy_path = "res://shape/triangle_b/triangle_b.tscn"
+rings = 3
+arms = 4
+
+[node name="straight" parent="SpinSpawner" instance=ExtResource("3_mwft6")]
+move_speed = 60.0

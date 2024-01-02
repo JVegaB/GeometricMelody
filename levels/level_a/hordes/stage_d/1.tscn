@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://l2tm51fo4x76"]
+
+[ext_resource type="Script" path="res://levels/level_a/hordes/stage_d/1.gd" id="1_5syux"]
+[ext_resource type="PackedScene" uid="uid://btextxkfp6f3b" path="res://enemy/generators/random/random.tscn" id="1_8af8k"]
+[ext_resource type="PackedScene" uid="uid://c05b2f0eh7bm5" path="res://shape/hexagon_a/hexagon.tscn" id="3_ak2w7"]
+
+[node name="1" type="Node2D"]
+script = ExtResource("1_5syux")
+
+[node name="Random" parent="." instance=ExtResource("1_8af8k")]
+scene_to_spawn = ExtResource("3_ak2w7")
+rounds = 4
+entities = 3
+round_time_sep = 2.0
+entity_time_sep = 0.5

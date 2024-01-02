@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://7na30vsaew2k"]
+
+[ext_resource type="Script" path="res://movement/charge_and_attack/charge.gd" id="1_a73u6"]
+
+[node name="Charge" type="Node"]
+script = ExtResource("1_a73u6")
+state_name = "charge"

@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://cd3m3lu4ytl4c"]
+
+[ext_resource type="Script" path="res://bullet/bullet.gd" id="1_but6b"]
+[ext_resource type="Script" path="res://movement/zigzag.gd" id="2_tnxwj"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_qsn0f"]
+size = Vector3(3, 6, 0)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k5hxx"]
+size = Vector2(3, 6)
+
+[node name="Bullet" type="StaticBody2D"]
+collision_layer = 2
+script = ExtResource("1_but6b")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="."]
+mesh = SubResource("BoxMesh_qsn0f")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_k5hxx")
+
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
+position = Vector2(-2.98023e-08, 0.5)
+scale = Vector2(0.1, 0.15)
+
+[node name="MovementZigZag" type="Node2D" parent="."]
+script = ExtResource("2_tnxwj")

@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://dqily8bfdipu6"]
+
+[ext_resource type="Script" path="res://movement/charge_and_attack/to_target.gd" id="1_fvig0"]
+
+[node name="ToTarget" type="Node"]
+script = ExtResource("1_fvig0")
+state_name = "to_target"
+initial = true

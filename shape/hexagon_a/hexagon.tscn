@@ -1,0 +1,38 @@
+[gd_scene load_steps=5 format=3 uid="uid://c05b2f0eh7bm5"]
+
+[ext_resource type="Script" path="res://shape/hexagon_a/hexagon.gd" id="1_5xeqa"]
+[ext_resource type="Texture2D" uid="uid://bcnf7ob4p2qs3" path="res://assets/hexagon.png" id="2_fcvg3"]
+[ext_resource type="PackedScene" uid="uid://bc87crx48hln6" path="res://health_c/health_c.tscn" id="2_i60yk"]
+[ext_resource type="PackedScene" uid="uid://0eb34fx5qk6x" path="res://movement/charge_and_attack/charge_and_attack.tscn" id="3_0tjqf"]
+
+[node name="Hexagon" type="Node2D" node_paths=PackedStringArray("hurt_box", "hit_box", "health_c")]
+script = ExtResource("1_5xeqa")
+hurt_box = NodePath("hurt")
+hit_box = NodePath("hit")
+health_c = NodePath("HeartC")
+color = Color(0, 0.505882, 0.898039, 1)
+
+[node name="HeartC" parent="." instance=ExtResource("2_i60yk")]
+health = 12
+
+[node name="Hexagon" type="Sprite2D" parent="."]
+position = Vector2(0, -9.53674e-07)
+scale = Vector2(0.0777719, 0.0777719)
+texture = ExtResource("2_fcvg3")
+
+[node name="ChargeAndAttack" parent="." instance=ExtResource("3_0tjqf")]
+
+[node name="hit" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="hit"]
+polygon = PackedVector2Array(0, -14, 12, -7, 12, 7, 0, 14, -12, 7, -12, -7)
+
+[node name="hurt" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="hurt"]
+position = Vector2(-1, 0)
+polygon = PackedVector2Array(1, -17, 16, -9, 16, 9, 1, 18, -14, 9, -14, -9)

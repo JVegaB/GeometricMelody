@@ -1,0 +1,38 @@
+[gd_scene load_steps=6 format=3 uid="uid://bmfv2fyvt0aef"]
+
+[ext_resource type="Script" path="res://spawn_areas/spawn_areas.gd" id="1_nhwhn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_24i6n"]
+size = Vector2(17.5929, 28.9109)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6pai1"]
+size = Vector2(17.4749, 27.4472)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3bm5b"]
+size = Vector2(291.879, 1.72547)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f0vj0"]
+size = Vector2(253.845, 1.64445)
+
+[node name="SpawnAreas" type="Area2D"]
+script = ExtResource("1_nhwhn")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-798, 435)
+scale = Vector2(8.9986, 71.7377)
+shape = SubResource("RectangleShape2D_24i6n")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(2070, 422)
+scale = Vector2(8.9986, 71.7377)
+shape = SubResource("RectangleShape2D_6pai1")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="."]
+position = Vector2(678, 1513)
+scale = Vector2(8.9986, 71.7377)
+shape = SubResource("RectangleShape2D_3bm5b")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="."]
+position = Vector2(613, -671)
+scale = Vector2(8.9986, 71.7377)
+shape = SubResource("RectangleShape2D_f0vj0")

@@ -1,0 +1,53 @@
+[gd_scene load_steps=7 format=3 uid="uid://dg0g52rol1ycf"]
+
+[ext_resource type="Script" path="res://shape/triangle_a/triangle_a.gd" id="1_p4k7g"]
+[ext_resource type="PackedScene" uid="uid://bc87crx48hln6" path="res://health_c/health_c.tscn" id="2_oflcp"]
+[ext_resource type="Texture2D" uid="uid://bpkndmsxap41h" path="res://assets/shapes/triangle.png" id="3_7xprw"]
+[ext_resource type="PackedScene" uid="uid://d4j61dqtxgn3t" path="res://movement/straight/straight.tscn" id="3_ccwu4"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_er10p"]
+radius = 7.99258
+height = 17.235
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_y4ngc"]
+radius = 8.0
+height = 22.0
+
+[node name="TriangleA" type="Node2D" node_paths=PackedStringArray("hurt_box", "hit_box", "health_c")]
+script = ExtResource("1_p4k7g")
+hurt_box = NodePath("Hurtbox")
+hit_box = NodePath("Hitbox")
+health_c = NodePath("HeartC")
+color = Color(0.858824, 0, 0.137255, 1)
+
+[node name="straight" parent="." instance=ExtResource("3_ccwu4")]
+move_speed = 250.0
+
+[node name="Hurtbox" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 2
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+position = Vector2(2, 0)
+scale = Vector2(2.50232, 1.74064)
+shape = SubResource("CapsuleShape2D_er10p")
+debug_color = Color(0.807843, 0.0745098, 0.227451, 0.419608)
+
+[node name="Triangle" type="Sprite2D" parent="."]
+position = Vector2(8, 0)
+rotation = 1.57079
+scale = Vector2(0.620966, 0.755814)
+texture = ExtResource("3_7xprw")
+
+[node name="HeartC" parent="." instance=ExtResource("2_oflcp")]
+health = 2
+
+[node name="Hitbox" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(2, 0)
+rotation = -1.57079
+shape = SubResource("CapsuleShape2D_y4ngc")

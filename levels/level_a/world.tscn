@@ -1,0 +1,96 @@
+[gd_scene load_steps=19 format=3 uid="uid://dm71lkxjwq6ec"]
+
+[ext_resource type="Script" path="res://levels/level_a/world.gd" id="1_lml6o"]
+[ext_resource type="PackedScene" uid="uid://f20esumgafn" path="res://player/player.tscn" id="2_xyh0q"]
+[ext_resource type="PackedScene" uid="uid://bewqle65j23re" path="res://daw/daw.tscn" id="3_c4rtu"]
+[ext_resource type="PackedScene" uid="uid://d0um6iaxk5vqb" path="res://gun/gun.tscn" id="3_vis12"]
+[ext_resource type="PackedScene" uid="uid://dwtjiy7jwi22" path="res://daw/audio_track.tscn" id="4_6uehi"]
+[ext_resource type="AudioStream" uid="uid://b8jcwc6ql6sch" path="res://assets/ableton/test_level/t1_synt.wav" id="5_tucvg"]
+[ext_resource type="AudioStream" uid="uid://c0vu67mo4pc85" path="res://assets/ableton/test_level/t2_beat__drum__loop.wav" id="6_2f3xj"]
+[ext_resource type="AudioStream" uid="uid://cqvfhk17bhqbm" path="res://assets/ableton/test_level/t3_beat__rotate__loop.wav" id="7_rhqxi"]
+[ext_resource type="PackedScene" uid="uid://d3se0uwyxxxn2" path="res://game_boundaries/game_boundaries.tscn" id="8_1m0j6"]
+[ext_resource type="AudioStream" uid="uid://cl8tbxnlj7f4h" path="res://assets/ableton/test_level/t4_echo.wav" id="8_5o8mn"]
+[ext_resource type="PackedScene" uid="uid://b5u3oakartv4s" path="res://camera/camera_2d.tscn" id="8_hn74j"]
+[ext_resource type="PackedScene" uid="uid://cudbrxvjq2cjj" path="res://rotation_plataform/rotation_plataform.tscn" id="9_lsymi"]
+[ext_resource type="Texture2D" uid="uid://bqpun3pbkgcy6" path="res://assets/dotted.png" id="12_unjwd"]
+[ext_resource type="PackedScene" uid="uid://daicngc8dph2j" path="res://succes_end/success.tscn" id="14_itjv6"]
+[ext_resource type="PackedScene" uid="uid://8nxopr3054yk" path="res://failure_end/failure.tscn" id="15_6lcoh"]
+[ext_resource type="PackedScene" uid="uid://b3ypu0kct4iwf" path="res://display_level/display_level.tscn" id="15_fuexe"]
+[ext_resource type="PackedScene" uid="uid://8ypaih4no5yb" path="res://fade_transition/fade_transition.tscn" id="16_eho8p"]
+
+[sub_resource type="Environment" id="Environment_upxvj"]
+background_mode = 3
+tonemap_mode = 3
+
+[node name="World" type="Node2D"]
+script = ExtResource("1_lml6o")
+
+[node name="CurrentLevelDisplay" parent="." instance=ExtResource("15_fuexe")]
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 1207.0
+offset_right = 1207.0
+grow_horizontal = 1
+grow_vertical = 1
+times = Array[float]([2.0, 16.0, 24.0, 24.0, 24.0])
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_upxvj")
+
+[node name="DAW" parent="." instance=ExtResource("3_c4rtu")]
+
+[node name="t1" parent="DAW" instance=ExtResource("4_6uehi")]
+stream = ExtResource("5_tucvg")
+
+[node name="t2__drums__" parent="DAW" instance=ExtResource("4_6uehi")]
+stream = ExtResource("6_2f3xj")
+drum_times = Array[float]([0.0, 0.65])
+max_iterations = 12
+
+[node name="t3__rotate__" parent="DAW" instance=ExtResource("4_6uehi")]
+stream = ExtResource("7_rhqxi")
+rotation_times = Array[float]([0.37])
+
+[node name="t4" parent="DAW" instance=ExtResource("4_6uehi")]
+stream = ExtResource("8_5o8mn")
+
+[node name="SpawnTimer" type="Timer" parent="."]
+wait_time = 6.0
+autostart = true
+
+[node name="RotationPlataform" parent="." instance=ExtResource("9_lsymi")]
+z_index = 1
+position = Vector2(599, 450)
+
+[node name="Dotted" type="Sprite2D" parent="RotationPlataform"]
+modulate = Color(1, 1, 1, 0.207843)
+light_mask = 0
+z_index = 2
+position = Vector2(6.57599, 3.57382)
+scale = Vector2(0.497229, 0.497347)
+texture = ExtResource("12_unjwd")
+
+[node name="GameBoundaries" parent="." instance=ExtResource("8_1m0j6")]
+position = Vector2(2, 0)
+
+[node name="Camera2D" parent="." instance=ExtResource("8_hn74j")]
+
+[node name="Player" parent="." instance=ExtResource("2_xyh0q")]
+position = Vector2(465, 408)
+acceleration = 10.0
+
+[node name="Gun" parent="Player" instance=ExtResource("3_vis12")]
+
+[node name="Marker2D" type="Marker2D" parent="Player/Gun"]
+position = Vector2(10, -7)
+
+[node name="Marker2D2" type="Marker2D" parent="Player/Gun"]
+position = Vector2(10, 7)
+
+[node name="failure" parent="." instance=ExtResource("15_6lcoh")]
+
+[node name="success" parent="." instance=ExtResource("14_itjv6")]
+
+[node name="fade_transition" parent="." instance=ExtResource("16_eho8p")]
+visible = false

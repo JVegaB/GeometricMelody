@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://cd3m3lu4ytl4c"]
+
+[ext_resource type="Script" path="res://bullet/bullet.gd" id="1_but6b"]
+[ext_resource type="Script" path="res://movement/straight/straight.gd" id="2_ambpb"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_qsn0f"]
+size = Vector3(6, 14, 0)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k5hxx"]
+size = Vector2(7.9999, 16)
+
+[node name="Bullet" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 4
+script = ExtResource("1_but6b")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="."]
+rotation = 1.57079
+mesh = SubResource("BoxMesh_qsn0f")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(2.38419e-07, 1.19209e-07)
+rotation = 1.57079
+shape = SubResource("RectangleShape2D_k5hxx")
+
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
+position = Vector2(-3, -3.55271e-15)
+scale = Vector2(0.1, 0.1)
+
+[node name="Straight" type="Node2D" parent="."]
+script = ExtResource("2_ambpb")
+move_speed = 700.0

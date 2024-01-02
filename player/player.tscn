@@ -1,0 +1,65 @@
+[gd_scene load_steps=7 format=3 uid="uid://f20esumgafn"]
+
+[ext_resource type="Script" path="res://player/player.gd" id="1_gebus"]
+[ext_resource type="PackedScene" uid="uid://bc87crx48hln6" path="res://health_c/health_c.tscn" id="2_gdjji"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5soje"]
+radius = 11.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gr8mc"]
+radius = 11.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_75wsq"]
+radius = 11.0
+height = 22.0
+
+[sub_resource type="PrismMesh" id="PrismMesh_enlj3"]
+size = Vector3(8, 8, 1)
+
+[node name="Player" type="CharacterBody2D"]
+collision_layer = 8
+collision_mask = 5
+script = ExtResource("1_gebus")
+
+[node name="HeartC" parent="." instance=ExtResource("2_gdjji")]
+
+[node name="Hurtbox" type="Area2D" parent="."]
+visible = false
+collision_layer = 8
+collision_mask = 4
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+shape = SubResource("CircleShape2D_5soje")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("CircleShape2D_gr8mc")
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="bg" type="MeshInstance2D" parent="Node2D"]
+modulate = Color(0.254902, 0.254902, 0.254902, 1)
+position = Vector2(3.12656, -5.96046e-08)
+scale = Vector2(1.44468, 1.16012)
+mesh = SubResource("SphereMesh_75wsq")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Node2D"]
+modulate = Color(0.92549, 0.92549, 0.92549, 1)
+mesh = SubResource("SphereMesh_75wsq")
+
+[node name="MeshInstance2D3" type="MeshInstance2D" parent="Node2D"]
+visible = false
+modulate = Color(0.92549, 0.92549, 0.92549, 1)
+position = Vector2(8, -7)
+rotation = -1.57079
+scale = Vector2(1, 1.8)
+mesh = SubResource("PrismMesh_enlj3")
+
+[node name="MeshInstance2D4" type="MeshInstance2D" parent="Node2D"]
+visible = false
+modulate = Color(0.92549, 0.92549, 0.92549, 1)
+position = Vector2(8, 7)
+rotation = -1.57079
+scale = Vector2(1, 1.8)
+mesh = SubResource("PrismMesh_enlj3")
